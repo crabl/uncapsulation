@@ -7,10 +7,22 @@ export interface World {
 
 let whens = []
 
+// FIXME: REMOVE THIS
+function removeBoxes() {
+  const boxes = document.querySelectorAll('.box');
+  if (boxes.length) {
+    for (let box of boxes) {
+      document.body.removeChild(box);
+    }
+  }
+}
+
 function tick(cursor) {
   const state: World = {
     cursor
   };
+
+  removeBoxes(); // clear the state of the dom
 
   for (let action of whens) {
     const { 

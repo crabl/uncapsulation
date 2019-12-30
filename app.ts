@@ -23,13 +23,33 @@ function options(world: World) {
 
 when(page, containsCursor, drawBox, options);
 
-function removeBox() {
-  const box = document.querySelector('.box');
-  if (box) {
-    document.body.removeChild(box);
-  }
+
+function options2(world: World) {
+  const height = 30;
+  const width = 30;
+
+  return {
+    position: {
+      x: world.cursor.x - (height / 2),
+      y: world.cursor.y - (height / 2)
+    },
+    height,
+    width,
+    color: 'purple'
+  };
 }
 
-when(page, not(containsCursor), removeBox);
+when(page, containsCursor, drawBox, options2);
+
+// function removeBoxes() {
+//   const boxes = document.querySelectorAll('.box');
+//   if (boxes.length) {
+//     for (let box of boxes) {
+//       document.body.removeChild(box);
+//     }
+//   }
+// }
+
+// when(page, not(containsCursor), removeBoxes);
 
 run();
