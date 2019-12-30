@@ -6,6 +6,8 @@ export function drawBox(options: {
   width: number, 
   color: string 
 }) {
+  // should just return a div element rather than queryselectoring + performing dom manip
+
   // if we have no box div create it
   let uuid = 'box-' + uuidv4();
   let box: HTMLDivElement = document.querySelector('#' + uuid);

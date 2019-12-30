@@ -8,7 +8,7 @@ export interface World {
 let whens = []
 
 // FIXME: REMOVE THIS
-function removeBoxes() {
+function clearDOM() {
   const boxes = document.querySelectorAll('.box');
   if (boxes.length) {
     for (let box of boxes) {
@@ -22,15 +22,19 @@ function tick(cursor) {
     cursor
   };
 
-  removeBoxes(); // clear the state of the dom
+  clearDOM(); // lmao maybe use angular for this idk
+  
+  // IDEA: rather than clearing the state of the dom every time, 
+  // we should do some diffing b/w which actions caused which
+  // consequences (since they are pure)
 
-  for (let action of whens) {
+  for (let when of whens) {
     const { 
       target, 
       condition, 
       consequence, 
       options 
-    } = action;
+    } = when;
 
     if (condition(target, state)) {
       if (options) {
