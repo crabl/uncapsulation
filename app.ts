@@ -1,11 +1,12 @@
 import { containsCursor } from './cursor';
 import { when } from './when';
 import { World, run } from './world';
-import { drawBoxAt } from './drawing';
+import { drawBox } from './drawing';
+import { not } from './logic';
 
 const page: HTMLDivElement = document.querySelector('.page');
 
-function withOptions(world: World) {
+function options(world: World) {
   const height = 20;
   const width = 20;
 
@@ -20,6 +21,15 @@ function withOptions(world: World) {
   };
 }
 
-when(page, containsCursor, drawBoxAt, withOptions);
+when(page, containsCursor, drawBox, options);
+
+function removeBox() {
+  const box = document.querySelector('.box');
+  if (box) {
+    document.body.removeChild(box);
+  }
+}
+
+when(page, not(containsCursor), removeBox);
 
 run();

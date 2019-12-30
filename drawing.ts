@@ -1,4 +1,4 @@
-export function drawBoxAt(options: { 
+export function drawBox(options: { 
   position: {x: number, y: number}, 
   height: number, 
   width: number, 

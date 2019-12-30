@@ -1,18 +1,10 @@
-import { fromEvent, merge } from 'rxjs';
+import { fromEvent } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { World } from './world';
 
 // mouse handling
-const mouseMouse$ = fromEvent(document, 'mousemove').pipe(map(onMouseUpdate));
-const mouseEnter$ = fromEvent(document, 'mouseenter').pipe(map(onMouseUpdate));
-const mouseOut$ = fromEvent(document, 'mouseout').pipe(map(() => null));
-
-export const cursor$ = merge(
-  mouseMouse$,
-  mouseEnter$,
-  mouseOut$
-);
+export const cursor$ = fromEvent(document, 'mousemove').pipe(map(onMouseUpdate));
 
 function onMouseUpdate(e: MouseEvent) {
   return {

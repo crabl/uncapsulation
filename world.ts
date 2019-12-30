@@ -21,7 +21,11 @@ function tick(cursor) {
     } = action;
 
     if (condition(target, state)) {
-      consequence(options(state));
+      if (options) {
+        consequence(options(state));
+      } else {
+        consequence();
+      }
     }
   }
 }
