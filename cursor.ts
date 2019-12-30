@@ -1,6 +1,8 @@
 import { fromEvent, merge } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { World } from './world';
+
 // mouse handling
 const mouseMouse$ = fromEvent(document, 'mousemove').pipe(map(onMouseUpdate));
 const mouseEnter$ = fromEvent(document, 'mouseenter').pipe(map(onMouseUpdate));
@@ -19,7 +21,7 @@ function onMouseUpdate(e: MouseEvent) {
   };
 }
 
-export function containsCursor(target: HTMLDivElement, state: WorldState) {
+export function containsCursor(target: HTMLDivElement, state: World) {
   if (!state.cursor) {
     return false;
   }
